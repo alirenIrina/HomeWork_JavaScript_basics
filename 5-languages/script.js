@@ -1,14 +1,14 @@
 let language = prompt("Укажите, носителем какого языка вы являетесь?");
 
 switch (language) {
-    case "Русского":
-        console.log("Здраствуйте!");
-        break;
-    case "English":
+    case "en":
         console.log("Hello!");
         break;
-    case "日本語":
-        console.log("こんにちは!");
+    case "ru":
+        console.log("Здравствуйте!");
+        break;
+    case "de":
+        console.log("Gutten tag!");
         break;
         default:
     console.log("Извини, но я пока не знаю такого языка:(");       
