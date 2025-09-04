@@ -2,26 +2,31 @@
 function crypto(encryption) {
     const res = encryption.split("");
 
-    const centerPart = res.splice(Math.round(res.length/2), 1);
+    const onePart = res.splice(0, Math.ceil((res.length - 1) / 2));
+    onePart.reverse();
+
     const endPart = res.pop();
     const startPart = res.shift();
 
-    res.unshift(centerPart);
-    res.push(endPart);
-    res.splice(Math.round(res.length/2), 0, startPart);
+    res.push(startPart);
+    res.unshift(endPart);
 
-    return res.join("");
+    const resEncryption = onePart.concat(res);
+
+    return resEncryption.join("");
 }
 
-function check(password, encryption) {
-    const decoding = crypto(encryption);
+    function check(ssapdorw, password) {
+    const decoding = crypto(ssapdorw);
     if (decoding === password) {
        return true;
     }
        return false;
 }
 
-console.log(check("password", crypto("password")));
+console.log(check(crypto("password"), "password"));
+
+
 
 
 
