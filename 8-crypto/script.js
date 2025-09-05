@@ -1,29 +1,24 @@
 
-function crypto(encryption) {
-    const res = encryption.split("");
+function crypto(password) {
+    const res = password.split("");
 
-    const onePart = res.splice(0, Math.ceil((res.length - 1) / 2));
-    onePart.reverse();
+    // [0, 2] = [2, 0];
+    [res[0], res[Math.round(res.length / 2) - 1]] = [res[Math.round(res.length / 2) - 1], res[0]];
+    // [1, 3] = [3, 1];
+    [res[1], res[Math.round(res.length / 2) - 2]] = [res[Math.round(res.length / 2) - 2], res[1]];
+    // [4, 7] = [7, 4];
+    [res[Math.round(res.length / 2)], res[Math.round(res.length - 1)]] = [res[Math.round(res.length - 1)], res[Math.round(res.length / 2)]];
 
-    const endPart = res.pop();
-    const startPart = res.shift();
-
-    res.push(startPart);
-    res.unshift(endPart);
-
-    const resEncryption = onePart.concat(res);
-
-    return resEncryption.join("");
+    return res.join("");
 }
 
-    function check(ssapdorw, password) {
+   function check(ssapdorw, password) {
     const decoding = crypto(ssapdorw);
     if (decoding === password) {
        return true;
     }
        return false;
 }
-
 console.log(check(crypto("password"), "password"));
 
 
