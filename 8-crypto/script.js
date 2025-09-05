@@ -1,20 +1,27 @@
 
 function crypto(password) {
-    const res = password.split("");
+    const ssapdorw = password.split("");
 
     // [0, 2] = [2, 0];
-    [res[0], res[Math.round(res.length / 2) - 1]] = [res[Math.round(res.length / 2) - 1], res[0]];
+    [ssapdorw[0], ssapdorw[Math.round(ssapdorw.length / 2) - 1]] = [ssapdorw[Math.round(ssapdorw.length / 2) - 1], ssapdorw[0]];
     // [1, 3] = [3, 1];
-    [res[1], res[Math.round(res.length / 2) - 2]] = [res[Math.round(res.length / 2) - 2], res[1]];
+    [ssapdorw[1], ssapdorw[Math.round(ssapdorw.length / 2) - 2]] = [ssapdorw[Math.round(ssapdorw.length / 2) - 2], ssapdorw[1]];
     // [4, 7] = [7, 4];
-    [res[Math.round(res.length / 2)], res[Math.round(res.length - 1)]] = [res[Math.round(res.length - 1)], res[Math.round(res.length / 2)]];
+    [ssapdorw[Math.round(ssapdorw.length / 2)], ssapdorw[Math.round(ssapdorw.length - 1)]] = [ssapdorw[Math.round(ssapdorw.length - 1)], ssapdorw[Math.round(ssapdorw.length / 2)]];
 
-    return res.join("");
+    return ssapdorw;
 }
 
    function check(ssapdorw, password) {
-    const decoding = crypto(ssapdorw);
-    if (decoding === password) {
+    //обратный алгоритм
+    // [2, 0] = [0, 2];
+    [ssapdorw[0], ssapdorw[Math.round(ssapdorw.length / 2) - 1]] = [ssapdorw[Math.round(ssapdorw.length / 2) - 1], ssapdorw[0]];
+    // [1, 3] = [3, 1];
+    [ssapdorw[1], ssapdorw[Math.round(ssapdorw.length / 2) - 2]] = [ssapdorw[Math.round(ssapdorw.length / 2) - 2], ssapdorw[1]];
+    // [4, 7] = [7, 4];
+    [ssapdorw[Math.round(ssapdorw.length / 2)], ssapdorw[Math.round(ssapdorw.length - 1)]] = [ssapdorw[Math.round(ssapdorw.length - 1)], ssapdorw[Math.round(ssapdorw.length / 2)]];
+
+    if (ssapdorw.join("") === password) {
        return true;
     }
        return false;
