@@ -1,8 +1,8 @@
 const card = '4561-2612-1234-5464';
 
-let sumNum = 0;
-
 function checkCard(card) {
+    let sumNum = 0;
+
     card = card.replaceAll('-', '');
 
     for (let i = 0; i < card.length; i += 1) {
@@ -17,7 +17,7 @@ function checkCard(card) {
             sumNum += evenNum;
         }
     }
-
+    
     if ((sumNum % 10) == 0) {
         return true;
     }
